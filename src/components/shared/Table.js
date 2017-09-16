@@ -14,10 +14,10 @@ function createData(name, address, postcode, email, telephone, status) {
 }
 
 const data = [
-    createData('Pinnacle People', '13 Second Avenue, Acton', 'W3 7RX', 'contact@pinnaclepeople.co.uk', '07748071982', 'Active'),
-    createData('Pinnacle People', '13 Second Avenue, Acton', 'W3 7RX', 'contact@pinnaclepeople.co.uk', '07748071982', 'Active'),
-    createData('Pinnacle People', '13 Second Avenue, Acton', 'W3 7RX', 'contact@pinnaclepeople.co.uk', '07748071982', 'Active'),
-    createData('Pinnacle People', '13 Second Avenue, Acton', 'W3 7RX', 'contact@pinnaclepeople.co.uk', '07748071982', 'Active'),
+    createData('Company 1', '1 Road, Town', 'A11 1AA', 'contact1@email.co.uk', '07123456789', 'Active'),
+    createData('Company 2', '2 Road, Town', 'A11 1AA', 'contact2@email.co.uk', '07123456789', 'Active'),
+    createData('Company 3', '3 Road, Town', 'A11 1AA', 'contact3@email.co.uk', '07123456789', 'Active'),
+    createData('Company 3', '4 Road, Town', 'A11 1AA', 'contact4@email.co.uk', '07123456789', 'Active'),
   ];
   
 class SimpleTable extends Component {

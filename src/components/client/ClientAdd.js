@@ -4,6 +4,10 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
+import { MenuItem } from 'material-ui/Menu';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Select from 'material-ui/Select';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 
@@ -42,7 +46,16 @@ class ClientAdd extends Component {
     
         constructor(props) {
             super()        
-        } 
+        }
+
+        state = {
+            engineer: '',
+            age: '',
+          };
+
+        handleChange = name => event => {
+            this.setState({ [name]: event.target.value });
+          };
     
         render() {        
             const { classes } = this.props;
@@ -147,32 +160,8 @@ class ClientAdd extends Component {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <TextField
-                                                id="contact_name"
-                                                label="Full Name"
-                                                className={classes.textField}
-                                                margin="normal"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <TextField
-                                                id="job_title"
-                                                label="Job Title"
-                                                className={classes.textField}
-                                                margin="normal"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <TextField
-                                                id="email"
-                                                label="Email Address"
-                                                className={classes.textField}
-                                                margin="normal"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <TextField
-                                                id="telephone"
-                                                label="Telephone Number"
+                                                id="engineer"
+                                                label="Engineer"
                                                 className={classes.textField}
                                                 margin="normal"
                                             />
