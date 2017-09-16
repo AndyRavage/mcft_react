@@ -15,11 +15,11 @@ const styles = theme => ({
       flexGrow: 1,
       marginTop: 30,
     },
-    paper: {
-      textAlign: 'center',
-      overflowX: 'auto',
-      color: theme.palette.text.secondary,
-    },
+    paper: theme.mixins.gutters({
+        paddingTop: 15,
+        paddingBottom: 15,
+        marginTop: 30
+    }),
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -55,7 +55,9 @@ class ClientList extends Component {
                                     color="secondary"
                                 />
                             </form>
-                            <SimpleTable />
+                            <Paper className={classes.paper} elevation={4}>
+                                <SimpleTable />
+                            </Paper>
                         </Grid>                        
                     </Grid>                   
                 </div>

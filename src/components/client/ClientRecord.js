@@ -5,17 +5,18 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import ModeEditIcon from 'material-ui-icons/ModeEdit';
+import Paper from 'material-ui/Paper';
 
 const styles = theme => ({
     root: {
       flexGrow: 1,
       marginTop: 30,
     },
-    paper: {
-      textAlign: 'center',
-      overflowX: 'auto',
-      color: theme.palette.text.secondary,
-    },
+    paper: theme.mixins.gutters({
+        paddingTop: 15,
+        paddingBottom: 15,
+        marginTop: 30
+    }),
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -43,6 +44,8 @@ class ClientRecord extends Component {
                     <Grid container spacing={24} justify='center'>                    
                         <Grid item xs={8}>
                             <Typography type="display2" gutterBottom>Client Name Here</Typography>
+                            <Paper className={classes.paper} elevation={4}>
+                            </Paper>
                         </Grid>
                     </Grid>
                 </div>
