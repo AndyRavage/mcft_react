@@ -6,21 +6,12 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Ta
 
 const styles = theme => ({
   });  
-
-let id = 0;
-function createData(name, address, postcode, email, telephone, status) {
-  id += 1;
-  return { id, name, address, postcode, email, telephone, status };
-}
-
-const data = [
-    createData('Company 1', '1 Road, Town', 'A11 1AA', 'contact1@email.co.uk', '07123456789', 'Active'),
-    createData('Company 2', '2 Road, Town', 'A11 1AA', 'contact2@email.co.uk', '07123456789', 'Active'),
-    createData('Company 3', '3 Road, Town', 'A11 1AA', 'contact3@email.co.uk', '07123456789', 'Active'),
-    createData('Company 3', '4 Road, Town', 'A11 1AA', 'contact4@email.co.uk', '07123456789', 'Active'),
-  ];
   
-class SimpleTable extends Component {
+class ClientTable extends Component {
+
+    constructor(props) {
+        super(props)
+    }
 
     handleClick = (event, id, name) => {
         this.props.history.push('/clients/' + id);
@@ -28,7 +19,7 @@ class SimpleTable extends Component {
 
     render() {
         const classes = this.props.classes;
-        
+
         return (
             <Table className={classes.table}>
                 <TableHead>
@@ -42,7 +33,7 @@ class SimpleTable extends Component {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map(n => {
+                    {this.props.data.map(n => {
                         return (
                             <TableRow key={n.id} hover onClick={event => this.handleClick(event, n.id, n.name)}>
                                 <TableCell>{n.name}</TableCell>
@@ -60,11 +51,9 @@ class SimpleTable extends Component {
     }
 }
 
-SimpleTable.propTypes = {
+ClientTable.propTypes = {
     classes: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    data: PropTypes.array.isRequired,
   };
 
-export default withStyles(styles)(withRouter(SimpleTable));
+export default withStyles(styles)(withRouter(ClientTable));

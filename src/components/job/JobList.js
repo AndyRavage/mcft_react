@@ -6,8 +6,6 @@ import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 
-import SimpleTable from '../shared/Table';
-
 const styles = theme => ({
     root: {
       flexGrow: 1,

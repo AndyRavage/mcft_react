@@ -70,7 +70,7 @@ class ClientAdd extends Component {
                                         <div className={classes.formGroup}>
                                             <Grid item xs={12}>
                                                 <Typography type="headline">
-                                                    Client Details
+                                                    Main Contact Details
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={6}>
@@ -114,7 +114,7 @@ class ClientAdd extends Component {
                                                 />
                                             </Grid>
                                         </div>
-                                    </Paper>
+                                    </Paper>                                    
                                     
                                     <Paper className={classes.paper} elevation={4}>    
                                         <div className={classes.formGroup}>
