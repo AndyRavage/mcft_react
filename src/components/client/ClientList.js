@@ -68,15 +68,6 @@ class ClientList extends Component {
     render() {
         const { classes } = this.props;
 
-        if(!this.state.clientData) return (
-            <div>
-                <Grid container spacing={0} justify='center' align='center'>
-                    <Grid item xs={1}>
-                        <CircularProgress className={classes.progress} />
-                    </Grid>
-                </Grid>
-            </div>
-        )
         return (
             <div>
                 <div className={classes.root}>
@@ -100,10 +91,19 @@ class ClientList extends Component {
                                     margin="normal"
                                     color="secondary"
                                 />
-                            </form>
-                            <Paper className={classes.paper} elevation={4}>                                
-                                <ClientTable data={this.state.clientData}/>
-                            </Paper>
+                            </form> 
+
+                            {!this.state.clientData ? (
+                                    <Grid container spacing={0} justify='center'>                    
+                                        <Grid item xs={2} className={classes.mainHeading_Grid}>
+                                            <CircularProgress className={classes.progress} />
+                                        </Grid>
+                                    </Grid>
+                                ):(
+                                    <Paper className={classes.paper} elevation={4}><ClientTable data={this.state.clientData}/></Paper>
+                                )
+                            }
+                            
                         </Grid>                        
                     </Grid>                   
                 </div>                               

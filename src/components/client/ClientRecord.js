@@ -6,8 +6,18 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import ModeEditIcon from 'material-ui-icons/ModeEdit';
 import Paper from 'material-ui/Paper';
+import Tabs, { Tab } from 'material-ui/Tabs';
 import { CircularProgress } from 'material-ui/Progress';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
+import Divider from 'material-ui/Divider';
+
+function TabContainer(props) {
+    return <div style={{ padding: 20 }}>{props.children}</div>;
+  }
+
+  TabContainer.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
 
 const styles = theme => ({
     root: {
@@ -40,19 +50,28 @@ const styles = theme => ({
         flexWrap: 'wrap',
         marginTop:'30px',
     },
-      fab_button: {
+    fab_button: {
         position: 'absolute',
         bottom: '-28px',
         right: '0',
     },
+    dividers: {
+        margin: '10px 0',
+    }
   });
 
 class ClientRecord extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            value: 0,
+        }
     }
+
+    handleChange = (event, value) => {
+        this.setState({ value });
+      };
     
     componentDidMount() {
         fetch('http://localhost:50450/api/clients/' + this.props.match.params.id)
@@ -67,6 +86,7 @@ class ClientRecord extends Component {
     render() {        
         const { classes } = this.props;
         const { match, location, history } = this.props;
+        const { value } = this.state;
 
         if(!this.state.clientData) return (
             <div>
@@ -93,7 +113,39 @@ class ClientRecord extends Component {
                     </div>
                     <Grid container spacing={24} justify='center' className={classes.contentGrid}>                    
                         <Grid item xs={8}>                            
-                            <Paper className={classes.paper} elevation={4}></Paper>
+                            <Paper className={classes.paper} elevation={4}>
+                                <Tabs value={value} onChange={this.handleChange}>
+                                    <Tab label="Summary" />
+                                    <Tab label="Contacts" />
+                                    <Tab label="Jobs" />
+                                    <Tab label="Sites" />
+                                    <Tab label="Contacts" />
+                                </Tabs>
+                                {value === 0 && 
+                                    <TabContainer>
+                                        <Grid item xs={4}>
+                                            <Typography type="body2">Address 1</Typography>
+                                            <Typography type="body1" gutterBottom>{this.state.clientData.address1 == null ? "\u00a0" : this.state.clientData.address1 }</Typography>
+                                            <Divider className={classes.dividers}/>
+                                        </Grid>
+                                        
+                                        <Grid item xs={4}>
+                                            <Typography type="body2">Address 2</Typography>
+                                            <Typography type="body1" gutterBottom>{this.state.clientData.address2 == null ? "\u00a0" : this.state.clientData.address2 }</Typography>
+                                            <Divider className={classes.dividers}/>
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <Typography type="body2">Town/City</Typography>
+                                            <Typography type="body1" gutterBottom>{this.state.clientData.town == null ? "\u00a0" : this.state.clientData.town }</Typography>
+                                            <Divider className={classes.dividers}/>
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <Typography type="body2">Postcode</Typography>
+                                            <Typography type="body1" gutterBottom>{this.state.clientData.postcode == null ? "\u00a0" : this.state.clientData.postcode }</Typography>
+                                        </Grid>
+                                    </TabContainer>
+                                }
+                            </Paper>
                         </Grid>
                     </Grid>
                 </div>
