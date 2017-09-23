@@ -33,7 +33,9 @@ class SimpleTable extends Component {
                 </TableHead>
                 <TableBody>
                     {this.props.data.map((row, j) => 
-                            <SimpleRow key={j} row={row}/>
+                        <TableRow key={j} hover onClick={event => this.handleClick(event, j.id, j.name)}>
+                            <SimpleRow key={j} data={row}/>
+                        </TableRow> 
                     )}
                 </TableBody>
             </Table>

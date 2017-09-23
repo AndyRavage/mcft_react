@@ -12,26 +12,23 @@ class SimpleRow extends Component {
 
     constructor(props) {
         super(props)
-        console.log(props);
     }
-
-    handleClick = (event, id, name) => {
-        this.props.history.push('/clients/' + id);
-    }    
 
     render() {
         const classes = this.props.classes;
 
         return (
-            this.props.row.map((cell,i) => 
-                <TableCell key={i}>{cell}</TableCell>            
-            )            
+            <div>
+                {this.props.data.map((cell,i) => 
+                    <TableCell key={i}>{cell}</TableCell>            
+                )}
+            </div>           
         );
     }
 }
 
 SimpleRow.propTypes = {
-    row: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
   };
 
 export default withStyles(styles)(withRouter(SimpleRow));
