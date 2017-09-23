@@ -10,6 +10,7 @@ import AddIcon from 'material-ui-icons/Add';
 import { CircularProgress } from 'material-ui/Progress';
 
 import ClientTable from './ClientListTable';
+import SimpleTable from './SimpleTable';
 
 
 const styles = theme => ({
@@ -53,7 +54,9 @@ class ClientList extends Component {
         
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            headers: ["Name", "Address", "Postcode", "Email", "Telephone", "Status"]
+        }
     }
     
     componentDidMount() {
@@ -100,7 +103,7 @@ class ClientList extends Component {
                                         </Grid>
                                     </Grid>
                                 ):(
-                                    <Paper className={classes.paper} elevation={4}><ClientTable data={this.state.clientData}/></Paper>
+                                    <Paper className={classes.paper} elevation={4}><SimpleTable data={this.state.clientData} headers={this.state.headers}/></Paper>
                                 )
                             }
                             
