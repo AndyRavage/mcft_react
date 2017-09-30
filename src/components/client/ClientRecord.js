@@ -10,8 +10,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 import { CircularProgress } from 'material-ui/Progress';
 import { withRouter } from 'react-router';
 import Divider from 'material-ui/Divider';
-import ClientRecordSiteTable from './ClientRecord_SiteTable';
-import ClientRecordJobTable from './ClientRecord_JobTable';
+import SimpleTable from './SimpleTable';
 import TextField from 'material-ui/TextField';
 
 function TabContainer(props) {
@@ -69,6 +68,8 @@ class ClientRecord extends Component {
         super(props)
         this.state = {
             value: 0,
+            jobDataHeaders: ["Id",, "Quote Id", "Description", "Site", "Job Type", "Engineer", "Equipment Type"],
+            siteDataHeaders: ["Id", "Name", "Equipment Type"]
         }
     }
 
@@ -125,7 +126,7 @@ class ClientRecord extends Component {
                                 </Tabs>
                                 {value === 0 && 
                                     <TabContainer>
-                                        <Grid container spacing={0} justify='left'>
+                                        <Grid container spacing={0} justify='flex-start'>
                                             <Grid item xs={4}>  
                                                 <Typography type="body2">Address 1</Typography>
                                                 <Typography type="body1" gutterBottom>{this.state.clientData.address1 == null ? "\u00a0" : this.state.clientData.address1 }</Typography>
@@ -151,7 +152,7 @@ class ClientRecord extends Component {
                                 }
                                 {value === 2 && 
                                     <TabContainer>
-                                     <ClientRecordJobTable data = {this.state.clientData.jobs} />
+                                     <SimpleTable data={this.state.clientData.jobs} headers={this.state.jobDataHeaders}/>
                                     </TabContainer>   
                                 }
                                 {value === 3 && 
@@ -163,7 +164,7 @@ class ClientRecord extends Component {
                                                 </Button>
                                             </Grid>
                                         </Grid>
-                                        <ClientRecordSiteTable data = {this.state.clientData.sites} />
+                                        <SimpleTable data={this.state.clientData.sites} headers={this.state.siteDataHeaders}/>
                                     </TabContainer>   
                                 }
                             </Paper>

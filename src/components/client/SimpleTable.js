@@ -3,7 +3,6 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-import SimpleRow from './SimpleRow';
 
 const styles = theme => ({
   });  
@@ -33,8 +32,10 @@ class SimpleTable extends Component {
                 </TableHead>
                 <TableBody>
                     {this.props.data.map((row, j) => 
-                        <TableRow key={j} hover onClick={event => this.handleClick(event, j.id, j.name)}>
-                            <SimpleRow key={j} data={row}/>
+                        <TableRow key={j} hover onClick={event => this.handleClick(event, row.id, row.name)}>
+                            {Object.keys(row).map((key) =>
+                                key === 'id' ? null : <TableCell key={key}>{row[key]}</TableCell>,
+                            )}
                         </TableRow> 
                     )}
                 </TableBody>

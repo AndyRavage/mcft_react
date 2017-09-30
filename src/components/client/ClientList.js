@@ -9,7 +9,6 @@ import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import { CircularProgress } from 'material-ui/Progress';
 
-import ClientTable from './ClientListTable';
 import SimpleTable from './SimpleTable';
 
 
